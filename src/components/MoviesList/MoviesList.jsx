@@ -13,6 +13,7 @@ function MoviesList({ films, route }) {
     </SimpleGrid>
   );
 }
+
 export default MoviesList;
 
 MoviesList.propTypes = {

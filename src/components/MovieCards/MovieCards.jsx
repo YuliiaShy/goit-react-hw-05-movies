@@ -8,7 +8,7 @@ import { IMAGE_URL } from 'services/API';
 
 function MovieCards({ film: { poster_path, name, title, id }, route = '' }) {
   const location = useLocation();
-
+  
   return (
     <Box width="300px">
       <NavLink to={`${route}${id}`} state={{ from: location }}>

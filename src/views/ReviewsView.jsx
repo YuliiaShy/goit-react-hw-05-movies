@@ -20,7 +20,7 @@ function ReviewsView() {
           ))}
         </UnorderedList>
       ) : (
-        <Text fontSize="6xl">No Reviews ¯\_(ツ)_/¯</Text>
+        <Text fontSize="6xl">No Reviews</Text>
       )}
     </>
   );

@@ -1,18 +1,14 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { movieDetails } from 'services/API';
 
 export function useFetchDetailsOneFilm() {
-  const [filmDetails, setFilm] = useState([]);
+  const [film, setFilm] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  let { movieId } = useParams();
-  const navigate = useNavigate();
+  const { movieId } = useParams();
 
-  useEffect(() => {
-    if (isNaN(movieId) || movieId.length > 6) {
-      navigate('/');
-    } else {
+  useEffect(() =>  {
       async function getMovie() {
         setIsLoading(true);
         try {
@@ -25,7 +21,7 @@ export function useFetchDetailsOneFilm() {
         }
       }
       getMovie();
-    }
-  }, [movieId, navigate]);
-  return { filmDetails, isLoading };
+  }, [movieId]);
+  
+  return { film, isLoading };
 }

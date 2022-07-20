@@ -5,7 +5,7 @@ import { IMAGE_URL } from 'services/API';
 import MovieIconDefault from 'images/movieIconDefault.jpg';
 
 function MovieDetailsPageView() {
-  const { filmDetails, isLoading } = useFetchDetailsOneFilm();
+  const { film, isLoading } = useFetchDetailsOneFilm();
   const {
     name,
     title,
@@ -19,7 +19,7 @@ function MovieDetailsPageView() {
         name: '',
       },
     ],
-  } = filmDetails;
+  } = film;
 
   let navigate = useNavigate();
   let location = useLocation();
@@ -59,7 +59,7 @@ function MovieDetailsPageView() {
             <Text> {vote_average}</Text>
             <Text fontWeight="700">Overview:</Text>
             <Text> {overview}</Text>
-            <Text fontWeight="700">Ganres:</Text>
+            <Text fontWeight="700">Genres:</Text>
             {genres.map(genre => (
               <Text key={genre.id}>{genre.name}</Text>
             ))}
@@ -69,7 +69,7 @@ function MovieDetailsPageView() {
       <Center>
         <Text
           as={NavLink}
-          to="cast"
+          to={`/movies/${film.id}/cast`}
           state={location.state}
           mr="20"
           fontSize="4xl"
@@ -78,7 +78,7 @@ function MovieDetailsPageView() {
         </Text>
         <Text
           as={NavLink}
-          to="reviews"
+          to={`/movies/${film.id}/reviews`}
           state={location.state}
           mr="20"
           fontSize="4xl"

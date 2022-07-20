@@ -1,11 +1,11 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import {NavLinkk} from 'components/NavBar/NavLinkk';
 
 import {
   Box,
   Flex,
   HStack,
-  Button,
   IconButton,
   useDisclosure,
   useColorModeValue,
@@ -13,30 +13,6 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 
-const NavLinkk = ({ children, link, isDisabled }) => (
-  <Button
-    mr={50}
-    px={2}
-    py={1}
-    rounded={'md'}
-    as={NavLink}
-    to={link}
-    color="#4b4f56"
-    _hover={{
-      bg: 'teal',
-      transform: 'scale(1.2)',
-      color: 'white',
-    }}
-    _disabled={{
-      bg: 'teal',
-      transform: 'scale(0.98)',
-      color: 'white',
-    }}
-    isDisabled={isDisabled}
-  >
-    {children}
-  </Button>
-);
 
 export function NavBar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
