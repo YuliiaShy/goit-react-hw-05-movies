@@ -7,7 +7,7 @@ function HomeView() {
 
   return (
     <Box p={5}>
-      <Text fontSize="5xl" textAlign="center">Trending today</Text>
+      <Text fontSize="4xl" textAlign="center">Trending today</Text>
       {isLoading && 'Loading...'}
       {!isLoading && <MoviesList films={films} route={'movies/'} />}
     </Box>

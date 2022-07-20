@@ -3,6 +3,7 @@ import { useFetchDetailsOneFilm } from 'hooks';
 import { Box, Text, Button, Image, Flex, Center } from '@chakra-ui/react';
 import { IMAGE_URL } from 'services/API';
 import MovieIconDefault from 'images/movieIconDefault.jpg';
+import {  Suspense } from 'react';
 
 function MovieDetailsPageView() {
   const { film, isLoading } = useFetchDetailsOneFilm();
@@ -69,7 +70,7 @@ function MovieDetailsPageView() {
       <Center>
         <Text
           as={NavLink}
-          to={`/movies/${film.id}/cast`}
+          to="cast"
           state={location.state}
           mr="20"
           fontSize="4xl"
@@ -78,7 +79,7 @@ function MovieDetailsPageView() {
         </Text>
         <Text
           as={NavLink}
-          to={`/movies/${film.id}/reviews`}
+          to="reviews"
           state={location.state}
           mr="20"
           fontSize="4xl"
@@ -86,7 +87,9 @@ function MovieDetailsPageView() {
           Reviews
         </Text>
       </Center>
-      <Outlet />
+      <Suspense fallback={'Loading...'}>
+            <Outlet />
+          </Suspense>
     </Box>
   );
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Input,
   InputGroup,
@@ -10,7 +10,7 @@ import { SearchIcon } from '@chakra-ui/icons';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 
-function SearchBar({ searchHandler }) {
+function SearchBar({ onSearch, query }) {
   const [inputValue, setInputValue] = useState('');
   const handleChange = evt => setInputValue(evt.target.value);
 
@@ -20,8 +20,14 @@ function SearchBar({ searchHandler }) {
     if (inputValue.trim() === '') {
       return toast.warn('Enter your request, please');
     }
-    searchHandler(inputValue.trim().toLowerCase());
+    onSearch({ query: inputValue });
   };
+
+  useEffect(() => {
+    if (query) {
+      setInputValue(query);
+    }
+  }, [query]);
 
   return (
     <Box as="form" mb="5" onSubmit={submitHandler}>
@@ -49,5 +55,6 @@ function SearchBar({ searchHandler }) {
 export default SearchBar;
 
 SearchBar.propTypes = {
-  searchHandler: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired,
+  query: PropTypes.string,
 };
